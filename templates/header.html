@@ -1,3 +1,4 @@
+{% from "macros.html" import nav_link with context %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -40,12 +41,14 @@
       </a>
     </div>
     <ul class="nav nav-pills">
-        <!--TODO fix the state of active links on pages-->
-        <li role="presentation" class="active"><a href="/">Home</a></li>
-        <li role="presentation"><a href="/products/">Products</a></li>
-        <li role="presentation"><a href="#">News</a></li>
-        <li role="presentation"><a href="#">Contact Us</a></li>
-        <li role="presentation"><a href="/account/">Your Account</a></li>
+        <!--TODO Links to be added in as needed-->
+        {{ nav_link('index', 'Home') }}
+        {{ nav_link('products', 'Products') }}
+        {{ nav_link('account', 'Account') }}
+
+        <!--<li role="presentation"><a href="#">News</a></li>-->
+        <!--<li role="presentation"><a href="#">Contact Us</a></li>-->
+        <!--<li role="presentation"><a href="/account/">Your Account</a></li>-->
 
 
         <div style="margin-right: 10px; margin-left: 15px; margin-top: 5px; margin-bottom: 5px;"  class="container-fluid">
