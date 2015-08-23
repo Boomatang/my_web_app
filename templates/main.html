@@ -1,0 +1,56 @@
+{% extends "header.html" %}
+
+{% block body %}
+
+<div>
+
+
+<!--    This block is used for the slide show. -->
+<!--    From the style.css there is 2 sections that is needed.
+                *** /* photobanner */ ***
+                *** /* keyframe animations */ ***
+-->
+<!--     Each image is 350px by 233px -->
+    <!--TODO make this read from a list of images-->
+    <!--TODO made as a added in Plugin type function-->
+    <div class='photobanner'>
+        <img class='first' src='images/image-1.jpg' alt="">
+        <img src="{{ url_for('static', filename='images/image-2.jpg') }}" alt=''>
+        <img src="{{ url_for('static', filename='images/image-3.jpg') }}" alt=''>
+        <img src="{{ url_for('static', filename='images/image-4.jpg') }}" alt=''>
+        <img src="{{ url_for('static', filename='images/image-5.jpg') }}" alt=''>
+        <img src="{{ url_for('static', filename='images/image-6.jpg') }}" alt=''>
+        <img src="{{ url_for('static', filename='images/image-1.jpg') }}" alt=''>
+        <img src="{{ url_for('static', filename='images/image-2.jpg') }}" alt=''>
+        <img src="{{ url_for('static', filename='images/image-3.jpg') }}" alt=''>
+        <img src="{{ url_for('static', filename='images/image-4.jpg') }}" alt=''>
+    </div>
+
+  <!--  End Slide Show -->
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">New Products</h3>
+  </div>
+  <div class="panel-body">
+      <!--TODO values need to be set to sql-->
+    {% for new_product in product_list %}
+
+    <div class="col-xs-6 col-md-3">
+    <a href="#" class="list-group-item">
+    <img src="{{ url_for('static', filename='images/image_holder-171x180.png') }}" alt="...">
+    <h5>Product Name</h5>
+    <h5>Price &euro;29.99</h5>
+    </a>
+    </div>
+
+    {% endfor %}
+
+  </div>
+
+
+
+
+</div>
+
+{% endblock %}

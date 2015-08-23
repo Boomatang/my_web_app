@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!--TODO set title to active-->
+    <title>Web App</title>
+    <meta content="Sample of how to do a slide show">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/foundation.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+
+
+</head>
+<body>
+
+  <div id='container'>
+
+<!--   Header not bootstrap -->
+  <header>
+        <h1>Animated Photo Banner</h1>
+        <p> Lorem ipsum dolor...</p>
+
+
+
+
+    </header>
+<!--     Old header end -->
+
+<!-- Bootstap Nav Haeder -->
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">
+<!--         This image needs to be small like an icon not a brand image -->
+        <img alt="Brand" src="...">
+      </a>
+    </div>
+    <ul class="nav nav-pills">
+        <!--TODO fix the state of active links on pages-->
+        <li role="presentation" class="active"><a href="/">Home</a></li>
+        <li role="presentation"><a href="/products/">Products</a></li>
+        <li role="presentation"><a href="#">News</a></li>
+        <li role="presentation"><a href="#">Contact Us</a></li>
+        <li role="presentation"><a href="/account/">Your Account</a></li>
+
+
+        <div style="margin-right: 10px; margin-left: 15px; margin-top: 5px; margin-bottom: 5px;"  class="container-fluid">
+          <ul class="nav navbar-nav navbar-right">
+
+			<h5>
+<!-- 			The cost should change this will be a flask thing -->
+			<a href="/cart/"> <span class="glyphicon glyphicon-shopping-cart"></span> Cart&nbsp;&euro;23.99&nbsp;&nbsp;&nbsp;</a>
+
+<!--                     The next section of flask code should remove the not need buttons -->
+<!--             flask code -->
+<!--             {% if session.logged_in %} -->
+
+            <a class="active" href="/logout/"><span class="glyphicon glyphicon-log-out"></span> Logout&nbsp;&nbsp;&nbsp;</a>
+
+<!--                     flask code -->
+<!--             {% else %} -->
+
+		    <a class="active" href="/login/"><span class="glyphicon glyphicon-log-in"></span> Login&nbsp;&nbsp;&nbsp;</a>
+		    <a class="active" href="/register/"><span class="glyphicon glyphicon-pencil"></span> Register</a>
+
+<!-- 		    flask code -->
+<!--             {% endif %} -->
+
+            </h5>
+
+      </ul>
+        </div>
+        </ul>
+  </div>
+</nav>
+<!-- End Bootstap Nav Header     -->
+
+
+<div class="container">
+
+{% block body %}{% endblock %}
+
+</div>
+
+
+
+</div>
+
+
+
+</body>
+</html>
