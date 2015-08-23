@@ -1,20 +1,30 @@
 from flask import Flask, render_template, request
+import time
 from forms_basics import *
+
+
 __author__ = 'boomatang'
 __version__ = '1'
 
 app = Flask(__name__)
+app.secret_key = 'A0Zr98j/3yX R~XHH!jmN]LWX/,?RT'
 
 @app.route('/register/', methods=['POST', 'GET'])
 def register():
     form = create_user()
-
     if request.method == 'POST':
-        first_name = form.first_name()
-        surname = form.surname()
-        email = form.email()
-        password = form.password()
-        re_password = form.re_password()
+        form_values = {
+            'first_name': form.first_name(),
+            'surname': form.surname(),
+            'email': form.email(),
+            'password': form.password(),
+            're_password': form.re_password(),
+            'account_type': 32,
+            'join_date': time.time()}
+
+
+
+
         # TODO: add in the sql function and the right redircts
 
     return render_template("users/register.html", form=form)
