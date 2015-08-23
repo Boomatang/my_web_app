@@ -4,7 +4,8 @@ from wtforms import Form, BooleanField, StringField, PasswordField, validators, 
 __author__ = 'boomatang'
 __version__ = '1'
 
-class create_user(Form):
+
+class Create_User(Form):
 
     first_name = StringField([validators.input_required(), validators.length(min=3, max=50)])
     surname = StringField([validators.input_required(), validators.length(min=3, max=50)])

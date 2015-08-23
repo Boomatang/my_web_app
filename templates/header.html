@@ -60,18 +60,18 @@
 
 <!--                     The next section of flask code should remove the not need buttons -->
 <!--             flask code -->
-<!--             {% if session.logged_in %} -->
+           {% if session.logged_in %}
 
             <a class="active" href="/logout/"><span class="glyphicon glyphicon-log-out"></span> Logout&nbsp;&nbsp;&nbsp;</a>
 
 <!--                     flask code -->
-<!--             {% else %} -->
+                {% else %}
 
 		    <a class="active" href="/login/"><span class="glyphicon glyphicon-log-in"></span> Login&nbsp;&nbsp;&nbsp;</a>
 		    <a class="active" href="/register/"><span class="glyphicon glyphicon-pencil"></span> Register</a>
 
 <!-- 		    flask code -->
-<!--             {% endif %} -->
+            {% endif %}
 
             </h5>
 
@@ -84,6 +84,18 @@
 
 
 <div class="container">
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-warning alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
 
 {% block body %}{% endblock %}
 

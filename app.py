@@ -1,34 +1,52 @@
-from flask import Flask, render_template, request
-from pymysql import escape_string as thwart
+import random
+from flask import Flask, render_template, request, flash, url_for, session
 import time
+from werkzeug.utils import redirect
 from forms_basics import *
 from sql_statments import *
-
+from passlib.hash import sha256_crypt
 
 __author__ = 'boomatang'
 __version__ = '1'
 
 app = Flask(__name__)
-app.secret_key = 'A0Zr98j/3yX R~XHH!jmN]LWX/,?RT'
+app.secret_key = 'A0Zr98j/3yX R~XHH!jmjydtriytdsdN]LWX/,?RT'
 
+@app.route("/logout/")
+def logout():
+    name = session['username']
+    session.clear()
+    gc.collect()
+    flash(name + " has been logged out!")
+    return redirect(url_for('index'))
 
 @app.route('/register/', methods=['POST', 'GET'])
 def register():
-    form = create_user()
+    form = Create_User()
     if request.method == 'POST':
         form_values = {
-            'first_name': thwart(form.first_name()),
-            'surname': thwart(form.surname()),
-            'email': thwart(form.email()),
-            'password': thwart(form.password()),
-            're_password': thwart(form.re_password()),
+            'first_name': thwart(request.form['first_name']),
+            'surname': thwart(request.form['surname']),
+            'email': thwart(request.form['email']),
+            'password': sha256_crypt.encrypt(thwart(request.form['password'])),
             'account_type': int(thwart(str(32))),
-            'join_date': int(thwart(str(time.time())))}
+            'join_date': int(thwart(str(int(time.time()))))}
+        re_password = thwart(request.form['re_password'])
 
-        is_new = check_new_user_email(form_values['email'])
+        if sha256_crypt.verify(re_password, form_values['password']):
+            re_password = random.random()
+            is_new = check_new_user_email(form_values['email'])
 
-        if is_new:
-            create_user_account(form_values)
+            if is_new:
+                create_user_account(form_values)
+                flash("Thank you, " + form_values['first_name'] + " for joining our family.")
+                return redirect(url_for('index'))
+            else:
+                flash("It seems that email is already used.")
+                return redirect(url_for('register', form=form))
+        else:
+            flash("Your passwords did not match.")
+            return redirect(url_for('register', form=form))
 
         # TODO: add in the sql function and the right redircts
 
