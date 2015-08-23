@@ -1,1 +1,2 @@
-This is the read me file it need to be worked on
+The goal of this project is to build a base shop front web site.
+It will then be used to build other projects off of.

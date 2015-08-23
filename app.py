@@ -1,5 +1,6 @@
 from flask import Flask, render_template
 __author__ = 'boomatang'
+__version__ = '1'
 
 app = Flask(__name__)
 
@@ -24,6 +25,12 @@ def products():
 def product_view():
 
     return render_template('products/product_view.html')
+
+
+# TODO: Set up the account page
+@app.route('/account/')
+def account():
+    return "PAge to be made"
 
 
 # error pages
