@@ -1,6 +1,8 @@
 from flask import Flask, render_template, request
+from pymysql import escape_string as thwart
 import time
 from forms_basics import *
+from sql_statments import *
 
 
 __author__ = 'boomatang'
@@ -9,21 +11,24 @@ __version__ = '1'
 app = Flask(__name__)
 app.secret_key = 'A0Zr98j/3yX R~XHH!jmN]LWX/,?RT'
 
+
 @app.route('/register/', methods=['POST', 'GET'])
 def register():
     form = create_user()
     if request.method == 'POST':
         form_values = {
-            'first_name': form.first_name(),
-            'surname': form.surname(),
-            'email': form.email(),
-            'password': form.password(),
-            're_password': form.re_password(),
-            'account_type': 32,
-            'join_date': time.time()}
+            'first_name': thwart(form.first_name()),
+            'surname': thwart(form.surname()),
+            'email': thwart(form.email()),
+            'password': thwart(form.password()),
+            're_password': thwart(form.re_password()),
+            'account_type': int(thwart(str(32))),
+            'join_date': int(thwart(str(time.time())))}
 
+        is_new = check_new_user_email(form_values['email'])
 
-
+        if is_new:
+            create_user_account(form_values)
 
         # TODO: add in the sql function and the right redircts
 
