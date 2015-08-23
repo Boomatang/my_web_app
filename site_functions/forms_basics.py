@@ -1,5 +1,4 @@
-from wtforms import Form, BooleanField, StringField, PasswordField, validators, TextAreaField, RadioField, IntegerField, \
-    DateField
+from wtforms import Form, BooleanField, StringField, PasswordField, validators, TextAreaField, RadioField, IntegerField, DateField
 
 __author__ = 'boomatang'
 __version__ = '1'
@@ -16,3 +15,7 @@ class Create_User(Form):
     user_level = IntegerField()
     join_date = IntegerField()
 
+
+class UserLogin(Form):
+    email = StringField([validators.input_required(), validators.length(min=5, max=50)])
+    password = PasswordField([validators.input_required(), validators.length(min=6, max=50)])

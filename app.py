@@ -1,4 +1,6 @@
+from functools import wraps
 import random
+import re
 from flask import Flask, render_template, request, flash, url_for, session
 import time
 from werkzeug.utils import redirect
@@ -12,13 +14,65 @@ __version__ = '1'
 app = Flask(__name__)
 app.secret_key = 'A0Zr98j/3yX R~XHH!jmjydtriytdsdN]LWX/,?RT'
 
+
+def login_required(f):
+    @wraps(f)
+    def wrap(*args, **kwargs):
+        if 'logged_in' in session:
+            return f(*args, **kwargs)
+        else:
+            flash('You need to login in first..')
+            return redirect(url_for('login'))
+
+    return wrap
+
+
+# ####################################
+
+@app.route("/login/", methods=["POST", "GET"])
+def login():
+    form = UserLogin()
+
+    if request.method == 'POST':
+        email = thwart(request.form['email'])
+        password = thwart(request.form['password'])
+
+        if re.match(r"^[A-Za-z0-9\.\+_-]+@[A-Za-z0-9\._-]+\.[a-zA-Z]*$", email):
+            if not check_new_user_email(email):
+                user = get_user_id(email)
+
+                check = comfirm_password(user[0], email, password)
+                password = random.random()
+
+                if check:
+                    session['username'] = user[1]
+                    session['userid'] = user[0]
+                    session['logged_in'] = True
+                    flash("Please check your login details")
+                    return redirect(url_for('index'))
+
+                else:
+                    flash("Please check your login details")
+                    return redirect(url_for('login'))
+            else:
+                flash("Please check your login details")
+                return redirect(url_for('login'))
+        else:
+            flash("Please check your login details")
+            return redirect(url_for('login'))
+
+    return render_template("users/login.html", form=form)
+
+
 @app.route("/logout/")
+@login_required
 def logout():
     name = session['username']
     session.clear()
     gc.collect()
     flash(name + " has been logged out!")
     return redirect(url_for('index'))
+
 
 @app.route('/register/', methods=['POST', 'GET'])
 def register():
@@ -35,14 +89,25 @@ def register():
 
         if sha256_crypt.verify(re_password, form_values['password']):
             re_password = random.random()
-            is_new = check_new_user_email(form_values['email'])
 
-            if is_new:
-                create_user_account(form_values)
-                flash("Thank you, " + form_values['first_name'] + " for joining our family.")
-                return redirect(url_for('index'))
+            if re.match(r"^[A-Za-z0-9\.\+_-]+@[A-Za-z0-9\._-]+\.[a-zA-Z]*$", form_values['email']):
+
+                is_new = check_new_user_email(form_values['email'])
+
+                if is_new:
+                    create_user_account(form_values)
+                    user = get_user_id(form_values['email'])
+                    session['username'] = user[1]
+                    session['userid'] = user[0]
+                    session['logged_in'] = True
+
+                    flash("Thank you, " + form_values['first_name'] + " for joining our family.")
+                    return redirect(url_for('index'))
+                else:
+                    flash("It seems that email is already used.")
+                    return redirect(url_for('register', form=form))
             else:
-                flash("It seems that email is already used.")
+                flash("Please enter a valid email address")
                 return redirect(url_for('register', form=form))
         else:
             flash("Your passwords did not match.")
@@ -70,14 +135,14 @@ def products():
 
 @app.route('/product_view/')
 def product_view():
-
+    # TODO: Set up the product view
     return render_template('products/product_view.html')
 
 
 # TODO: Set up the account page
 @app.route('/account/')
 def account():
-    return "PAge to be made"
+    return redirect(url_for('index'))
 
 
 # error pages

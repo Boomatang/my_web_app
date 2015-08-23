@@ -23,6 +23,7 @@ CREATE TABLE IF NOT EXISTS `shop_front`.`user_tbl` (
   `paswrd` VARCHAR(100) NULL COMMENT '',
   `usercol` VARCHAR(45) NULL COMMENT '',
   `userLevel` INT(2) NULL COMMENT '',
+  `joinDate` INT NULL COMMENT '',
   PRIMARY KEY (`iduser`)  COMMENT '')
 ENGINE = InnoDB;
 
