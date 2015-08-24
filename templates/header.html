@@ -44,11 +44,26 @@
         <!--TODO Links to be added in as needed-->
         {{ nav_link('index', 'Home') }}
         {{ nav_link('products', 'Products') }}
-        {{ nav_link('account', 'Account') }}
 
-        <!--<li role="presentation"><a href="#">News</a></li>-->
-        <!--<li role="presentation"><a href="#">Contact Us</a></li>-->
-        <!--<li role="presentation"><a href="/account/">Your Account</a></li>-->
+        {% if session['logged_in'] %}
+        <!--dorp dowm button-->
+    <li>
+    <div class="btn-group">
+    <a type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Account <span class="caret"></span>
+    </a>
+
+    <ul class="dropdown-menu">
+        {{ nav_link('index', 'Shipping Address') }}
+        {{ nav_link('index', 'Open Orders') }}
+        {{ nav_link('index', 'Past History') }}
+        <li role="separator" class="divider"></li>
+        {{ nav_link('index', 'Edit Account Details') }}
+    </ul>
+
+</div>
+</li>
+{% endif %}
 
 
         <div style="margin-right: 10px; margin-left: 15px; margin-top: 5px; margin-bottom: 5px;"  class="container-fluid">

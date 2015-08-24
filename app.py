@@ -49,7 +49,7 @@ def login():
                     session['username'] = user[1]
                     session['userid'] = user[0]
                     session['logged_in'] = True
-                    flash("Please check your login details")
+                    flash("Welcome back " + session['username'] + '.')
                     return redirect(url_for('index'))
 
                 else:
@@ -136,7 +136,8 @@ def products():
 
 @app.route('/product_view/')
 def product_view():
-    # TODO: Set up the product view
+
+    # TODO: There is a lot of sql work needed here
     return render_template('products/product_view.html')
 
 
