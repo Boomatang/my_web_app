@@ -30,3 +30,18 @@ ENGINE = InnoDB;
 CREATE UNIQUE INDEX `iduser_UNIQUE` ON `shop_front`.`user_tbl` (`iduser` ASC)  COMMENT '';
 
 CREATE UNIQUE INDEX `email_UNIQUE` ON `shop_front`.`user_tbl` (`email` ASC)  COMMENT '';
+
+-- -----------------------------------------------------
+-- Table `shop_front`.`product_tbl`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `shop_front`.`product_tbl` (
+	`IDproduct` INT NOT NULL AUTO_INCREMENT COMMENT '',
+    `product_title` VARCHAR(30) NULL COMMENT '',
+    `product_cost` FLOAT(7,2) NULL COMMENT '',
+    `product_status` VARCHAR(10) NULL COMMENT  '',
+	`product_description` VARCHAR(2000) NULL COMMENT '',
+    `IDcreator` INT NULL COMMENT '',
+    `product_entry_date` INT NULL COMMENT '',
+    PRIMARY KEY (`IDproduct`) COMMENT '')
+ENGINE = InnoDB;
+
