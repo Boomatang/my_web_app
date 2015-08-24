@@ -12,6 +12,7 @@ __author__ = 'boomatang'
 __version__ = '1'
 
 app = Flask(__name__)
+# TODO: This key need to be change with new sites and moved to a safe place. Its here for testing only
 app.secret_key = 'A0Zr98j/3yX R~XHH!jmjydtriytdsdN]LWX/,?RT'
 
 
