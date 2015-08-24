@@ -126,3 +126,23 @@ def comfirm_password(userid, email, password):
     conn_close(c, conn)
 
     return output
+
+
+def product_full_list():
+    c, conn = connection()
+
+    sql = """
+        SELECT IDproduct, product_title, product_description, product_cost
+        FROM product_tbl
+        """
+
+    data = c.execute(sql)
+
+    if data > 0:
+        output = c.fetchall()
+    else:
+        output = None
+
+    conn_close(c, conn)
+
+    return output

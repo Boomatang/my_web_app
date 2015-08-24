@@ -114,7 +114,7 @@ def register():
             flash("Your passwords did not match.")
             return redirect(url_for('register', form=form))
 
-        # TODO: add in the sql function and the right redircts
+            # TODO: add in the sql function and the right redircts
 
     return render_template("users/register.html", form=form)
 
@@ -126,18 +126,36 @@ def index():
     return render_template("main.html", product_list=product_list)
 
 
-@app.route('/products/')
+@app.route('/products/', methods=['POST', 'GET'])
 def products():
-    # TODO add the sql function to bring in the products
-    product_list = range(0, 16)
+    # TODO Change to make the custom url and add to cart
+    # TODO: Add function to shorten up the description so as to keep all the boxes the same size. This may mean adding in white space.
+    product_list = product_full_list()
+
+    if request.method == 'POST':
+        flash("you got it right the first time")
+
+        if request.form['action'] == 'View':
+            # TODO: pass the page number in to the url
+            IDprod = request.form['Product'][0]
+            return redirect(url_for('product_view', ID=IDprod))
+
+        elif request.form['action'] == 'Add to Cart':
+            # TODO: Code needs to be added here after the cart pages have been set up
+            flash("Item " + request.form['Product'] + " added to cart")
+
+        else:
+            render_template("products/products.html", product_list=product_list)
 
     return render_template("products/products.html", product_list=product_list)
 
 
-@app.route('/product_view/')
+@app.route('/product_view/', methods=['GET', 'POST'])
 def product_view():
-
     # TODO: There is a lot of sql work needed here
+    IDproduct = request.args.get('ID')
+
+
     return render_template('products/product_view.html')
 
 
@@ -156,7 +174,6 @@ def fail404(e):
 @app.errorhandler(405)
 def fail404(e):
     return render_template("errors/405.html")
-
 
 
 if __name__ == '__main__':

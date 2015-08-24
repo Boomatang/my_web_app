@@ -1,0 +1,4 @@
+UPGRADES
+
+On the product view page change the address link to show the product number but the title of the product.
+    This will need the white space to be removed out of the title to work I believe
