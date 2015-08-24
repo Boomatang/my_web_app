@@ -1,12 +1,13 @@
 from functools import wraps
-import random
 import re
-from flask import Flask, render_template, request, flash, url_for, session
 import time
+
+from flask import Flask, render_template, request, flash, url_for, session
 from werkzeug.utils import redirect
+from passlib.hash import sha256_crypt
+
 from forms_basics import *
 from sql_statments import *
-from passlib.hash import sha256_crypt
 
 __author__ = 'boomatang'
 __version__ = '1'
@@ -154,7 +155,6 @@ def products():
 def product_view():
     # TODO: There is a lot of sql work needed here
     IDproduct = request.args.get('ID')
-
 
     return render_template('products/product_view.html')
 

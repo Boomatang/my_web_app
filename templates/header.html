@@ -18,112 +18,114 @@
 </head>
 <body>
 
-  <div id='container'>
+<div id='container'>
 
-<!--   Header not bootstrap -->
-  <header>
+    <!--   Header not bootstrap -->
+    <header>
         <h1>Shop Front</h1>
 
 
-
-
-
     </header>
-<!--     Old header end -->
+    <!--     Old header end -->
 
-<!-- Bootstap Nav Haeder -->
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="#">
-<!--         This image needs to be small like an icon not a brand image -->
-        <img alt="Brand" src="...">
-      </a>
-    </div>
-    <ul class="nav nav-pills">
-        <!--TODO Links to be added in as needed-->
-        {{ nav_link('index', 'Home') }}
-        {{ nav_link('products', 'Products') }}
+    <!-- Bootstap Nav Haeder -->
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">
+                    <!--         This image needs to be small like an icon not a brand image -->
+                    <img alt="Brand" src="...">
+                </a>
+            </div>
+            <ul class="nav nav-pills">
+                <!--TODO Links to be added in as needed-->
+                {{ nav_link('index', 'Home') }}
+                {{ nav_link('products', 'Products') }}
 
-        {% if session['logged_in'] %}
-        <!--dorp dowm button-->
-    <li>
-    <div class="btn-group">
-    <a type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Account <span class="caret"></span>
-    </a>
+                {% if session['logged_in'] %}
+                <!--dorp dowm button-->
+                <li>
+                    <div class="btn-group">
+                        <a type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown"
+                           aria-haspopup="true" aria-expanded="false">
+                            Account <span class="caret"></span>
+                        </a>
 
-    <ul class="dropdown-menu">
-        {{ nav_link('index', 'Shipping Address') }}
-        {{ nav_link('index', 'Open Orders') }}
-        {{ nav_link('index', 'Past History') }}
-        <li role="separator" class="divider"></li>
-        {{ nav_link('index', 'Edit Account Details') }}
-    </ul>
+                        <ul class="dropdown-menu">
+                            {{ nav_link('index', 'Shipping Address') }}
+                            {{ nav_link('index', 'Open Orders') }}
+                            {{ nav_link('index', 'Past History') }}
+                            <li role="separator" class="divider"></li>
+                            {{ nav_link('index', 'Edit Account Details') }}
+                        </ul>
 
-</div>
-</li>
-{% endif %}
-
-
-        <div style="margin-right: 10px; margin-left: 15px; margin-top: 5px; margin-bottom: 5px;"  class="container-fluid">
-          <ul class="nav navbar-nav navbar-right">
-
-			<h5>
-<!-- 			The cost should change this will be a flask thing -->
-			<a href="/cart/"> <span class="glyphicon glyphicon-shopping-cart"></span> Cart&nbsp;&euro;23.99&nbsp;&nbsp;&nbsp;</a>
-
-<!--                     The next section of flask code should remove the not need buttons -->
-<!--             flask code -->
-           {% if session.logged_in %}
-
-            <a class="active" href="/logout/"><span class="glyphicon glyphicon-log-out"></span> Logout&nbsp;&nbsp;&nbsp;</a>
-
-<!--                     flask code -->
-                {% else %}
-
-		    <a class="active" href="/login/"><span class="glyphicon glyphicon-log-in"></span> Login&nbsp;&nbsp;&nbsp;</a>
-		    <a class="active" href="/register/"><span class="glyphicon glyphicon-pencil"></span> Register</a>
-
-<!-- 		    flask code -->
-            {% endif %}
-
-            </h5>
-
-      </ul>
-        </div>
-        </ul>
-  </div>
-</nav>
-<!-- End Bootstap Nav Header     -->
+                    </div>
+                </li>
+                {% endif %}
 
 
-<div class="container">
-    {% with messages = get_flashed_messages() %}
-        {% if messages %}
-            {% for message in messages %}
-                <div class="alert alert-warning alert-dismissible" role="alert">
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                    {{ message }}
+                <div style="margin-right: 10px; margin-left: 15px; margin-top: 5px; margin-bottom: 5px;"
+                     class="container-fluid">
+                    <ul class="nav navbar-nav navbar-right">
+
+                        <h5>
+                            <!-- 			The cost should change this will be a flask thing -->
+                            <a href="/cart/"> <span class="glyphicon glyphicon-shopping-cart"></span> Cart&nbsp;&euro;23.99&nbsp;&nbsp;&nbsp;
+                            </a>
+
+                            <!--                     The next section of flask code should remove the not need buttons -->
+                            <!--             flask code -->
+                            {% if session.logged_in %}
+
+                            <a class="active" href="/logout/"><span class="glyphicon glyphicon-log-out"></span> Logout&nbsp;&nbsp;&nbsp;
+                            </a>
+
+                            <!--                     flask code -->
+                            {% else %}
+
+                            <a class="active" href="/login/"><span class="glyphicon glyphicon-log-in"></span> Login&nbsp;&nbsp;&nbsp;
+                            </a>
+                            <a class="active" href="/register/"><span class="glyphicon glyphicon-pencil"></span>
+                                Register</a>
+
+                            <!-- 		    flask code -->
+                            {% endif %}
+
+                        </h5>
+
+                    </ul>
                 </div>
-            {% endfor %}
+            </ul>
+        </div>
+    </nav>
+    <!-- End Bootstap Nav Header     -->
+
+
+    <div class="container">
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-warning alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            {{ message }}
+        </div>
+        {% endfor %}
         {% endif %}
-    {% endwith %}
+        {% endwith %}
 
-{% block body %}{% endblock %}
+        {% block body %}{% endblock %}
+
+    </div>
+
 
 </div>
 
-
-
-</div>
-
-  <!-- Bootstap JS -->
-    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-    <script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
-  <!-- End Bootstap JS -->
+<!-- Bootstap JS -->
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+<!-- End Bootstap JS -->
 
 
 </body>

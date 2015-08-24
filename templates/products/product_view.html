@@ -4,157 +4,170 @@
 <!--TODO: There is a lot of sql work needed here-->
 <div>
 
- <!-- Product viewport     -->
-<article class="container">
+    <!-- Product viewport     -->
+    <article class="container">
 
-<header class="container">
+        <header class="container">
 
-<div class="container">
- <div class="container col-sm-6 col-md-6">
-      <!--TODO: Large view of images needs to be put in place-->
-      <!--TODO: Add size for the max image, this is for the large and small images-->
-      <!--TODO: List needs to come from the data base with image links-->
-      <img src=" {{ url_for('static', filename='images/image_holder-250x300.png') }}" alt="..." style="border: solid gray 1px">
-      <img src="{{ url_for('static', filename='images/image_holder-75x90.png') }}" alt="..." style="border: solid gray 1px">
-      <img src="{{ url_for('static', filename='images/image_holder-75x90.png') }}" alt="..." style="border: solid gray 1px">
-      <img src="{{ url_for('static', filename='images/image_holder-75x90.png') }}" alt="..." style="border: solid gray 1px">
-
-
-</div>
-
-
-<div class="container col-sm-4 col-md-6">
-      <h2>Product Title</h2>
-      <h4>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<sup>By</sup> <cite>James Fitzpatrick</cite></h4>
-
-      <div class="container  col-sm-4 col-md-6">
-      <p><b>User Rating</b></p>
-      <div class="progress">
-  <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
-    <span class="sr-only">40% Complete (success)</span>
-  </div>
-  </div>
-</div>
-
-      </div>
+            <div class="container">
+                <div class="container col-sm-6 col-md-6">
+                    <!--TODO: Large view of images needs to be put in place-->
+                    <!--TODO: Add size for the max image, this is for the large and small images-->
+                    <!--TODO: List needs to come from the data base with image links-->
+                    <img src=" {{ url_for('static', filename='images/image_holder-250x300.png') }}" alt="..."
+                         style="border: solid gray 1px">
+                    <img src="{{ url_for('static', filename='images/image_holder-75x90.png') }}" alt="..."
+                         style="border: solid gray 1px">
+                    <img src="{{ url_for('static', filename='images/image_holder-75x90.png') }}" alt="..."
+                         style="border: solid gray 1px">
+                    <img src="{{ url_for('static', filename='images/image_holder-75x90.png') }}" alt="..."
+                         style="border: solid gray 1px">
 
 
-<div class="container">
-<h3>Price: &euro;29.99</h3>
-<a class="btn btn-primary" href="#" role="button">Add to Cart</a>
-</div>
-</header>
-
-<!-- Discription Section -->
-<section class="panel panel-default">
+                </div>
 
 
-  <div class="panel-heading">
-    <h3 class="panel-title">Description</h3>
-  </div>
-  <div class="panel-body">
-<p >
-	User Support</p>
-	<ol type="a">
-		<li/>
-<p >
-		The four levels of support are.</p>
-		<ul>
-			<li/>
-<p >
-			On-line help is the lowest level of help. This is where the user
-			finds their own help. It comes from good help documentation in the
-			software and turning to the Internet forums to find information
-			and help. It is the user going out and finding other user who may
-			have had the same problem or knows how to solve the problems.
-			</p>
-			<p >It
-			is possible that a user will gain the best long term information
-			this way, as nothing will be handed to them. The user needs to
-			learn to solve the problems themselves.
-			</p>
-			<p >For
-			this to work successfully there needs to be large groups using the
-			software or hardware in question. It will not work well for
-			bespoke set ups.</p>
-			<li/>
-<p >
-			Front line support. The user is meet by a support personnel that
-			is wanting to promote the system in question. These support
-			personnel may not have a technical understanding of the problems
-			and provide quick-fix solutions as well as non-technical support.</p>
-			<p >It
-			would be quite possible that the front line personnel would be
-			reading from a list of predetermined answer to the problems. That
-			is by no means saying that its not the right answer. Just if the
-			user problem goes outside the scope of the answer, then the
-			problem may be passed on to the next stage.</p>
-			<li/>
-<p >
-			The third level of support is the second line support. The support
-			that is provide at this level is more technical. Support here will
-			delve more in to the workings of the system over the user
-			interaction with the system. To get to this level of support a
-			user will first have to pass through the front line support.</p>
-			<p >The
-			support personnel here will be very technical and can be based in
-			house or by an external company. They will have great knowledge of
-			the system and can solve the majority of problems. Not many
-			problems will pass this level of support and any that kjbido will
-			be major problems.</p>
-			<li/>
-<p >
-			For the major problems there is the third line. This is the last
-			line of support if a problem reach this level there is some real
-			issues. The system builders, analysts and designers make up this
-			support. Costs of this support will be taken up in a maintenance
-			contract or on an issue by issue bases.
-			</p>
-			<p >Taken
-			down or even rebuilding sections of a system are a real
-			possibility at this stage. End results of a new system been need
-			to be develop could come out as been the easiest and cheapest fix
-			to a problem.
-			</p>
-		</ul>
-		<li/>
-  </div>
+                <div class="container col-sm-4 col-md-6">
+                    <h2>Product Title</h2>
+                    <h4>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<sup>By</sup> <cite>James
+                        Fitzpatrick</cite></h4>
 
-</section>
-<!-- End Discription SEction -->
+                    <div class="container  col-sm-4 col-md-6">
+                        <p><b>User Rating</b></p>
+
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-success progress-bar-striped" role="progressbar"
+                                 aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
+                                <span class="sr-only">40% Complete (success)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
 
 
-<!-- Comments Section -->
-<section class="panel panel-default">
-  <div class="panel-heading col-6">
-    <h3 class="panel-title">Comments</h3>
-  </div>
-  <div class="panel-body">
+                <div class="container">
+                    <h3>Price: &euro;29.99</h3>
+                    <a class="btn btn-primary" href="#" role="button">Add to Cart</a>
+                </div>
+        </header>
 
-  <div class="well well-sm">This is a comment.</div>
-  <div class="well well-sm">We have added a new on.</div>
+        <!-- Discription Section -->
+        <section class="panel panel-default">
 
-<!--  Form needs more work but will get the point across. It does need to react to users been logged_in or not.  -->
-<form class="form-horizontal">
-<h3>Leave your comment</h3>
-<textarea class="form-control" rows="3"></textarea>
-<div class="form-group">
-    <label for="inputPassword3" class="col-sm-2 control-label">Your Rating</label>
 
-<label class="radio-inline">
-  <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> 1
-</label>
-<label class="radio-inline">
-  <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> 2
-</label>
-<label class="radio-inline">
-  <input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3"> 3
-</label>
-</div>
-<button type="submit" class="btn btn-primary">Submit</button>
-</form>
-</section>
-</article>
+            <div class="panel-heading">
+                <h3 class="panel-title">Description</h3>
+            </div>
+            <div class="panel-body">
+                <p>
+                    User Support</p>
+                <ol type="a">
+                    <li/>
+                    <p>
+                        The four levels of support are.</p>
+                    <ul>
+                        <li/>
+                        <p>
+                            On-line help is the lowest level of help. This is where the user
+                            finds their own help. It comes from good help documentation in the
+                            software and turning to the Internet forums to find information
+                            and help. It is the user going out and finding other user who may
+                            have had the same problem or knows how to solve the problems.
+                        </p>
+
+                        <p>It
+                            is possible that a user will gain the best long term information
+                            this way, as nothing will be handed to them. The user needs to
+                            learn to solve the problems themselves.
+                        </p>
+
+                        <p>For
+                            this to work successfully there needs to be large groups using the
+                            software or hardware in question. It will not work well for
+                            bespoke set ups.</p>
+                        <li/>
+                        <p>
+                            Front line support. The user is meet by a support personnel that
+                            is wanting to promote the system in question. These support
+                            personnel may not have a technical understanding of the problems
+                            and provide quick-fix solutions as well as non-technical support.</p>
+
+                        <p>It
+                            would be quite possible that the front line personnel would be
+                            reading from a list of predetermined answer to the problems. That
+                            is by no means saying that its not the right answer. Just if the
+                            user problem goes outside the scope of the answer, then the
+                            problem may be passed on to the next stage.</p>
+                        <li/>
+                        <p>
+                            The third level of support is the second line support. The support
+                            that is provide at this level is more technical. Support here will
+                            delve more in to the workings of the system over the user
+                            interaction with the system. To get to this level of support a
+                            user will first have to pass through the front line support.</p>
+
+                        <p>The
+                            support personnel here will be very technical and can be based in
+                            house or by an external company. They will have great knowledge of
+                            the system and can solve the majority of problems. Not many
+                            problems will pass this level of support and any that kjbido will
+                            be major problems.</p>
+                        <li/>
+                        <p>
+                            For the major problems there is the third line. This is the last
+                            line of support if a problem reach this level there is some real
+                            issues. The system builders, analysts and designers make up this
+                            support. Costs of this support will be taken up in a maintenance
+                            contract or on an issue by issue bases.
+                        </p>
+
+                        <p>Taken
+                            down or even rebuilding sections of a system are a real
+                            possibility at this stage. End results of a new system been need
+                            to be develop could come out as been the easiest and cheapest fix
+                            to a problem.
+                        </p>
+                    </ul>
+                    <li/>
+            </div>
+
+        </section>
+        <!-- End Discription SEction -->
+
+
+        <!-- Comments Section -->
+        <section class="panel panel-default">
+            <div class="panel-heading col-6">
+                <h3 class="panel-title">Comments</h3>
+            </div>
+            <div class="panel-body">
+
+                <div class="well well-sm">This is a comment.</div>
+                <div class="well well-sm">We have added a new on.</div>
+
+                <!--  Form needs more work but will get the point across. It does need to react to users been logged_in or not.  -->
+                <form class="form-horizontal">
+                    <h3>Leave your comment</h3>
+                    <textarea class="form-control" rows="3"></textarea>
+
+                    <div class="form-group">
+                        <label for="inputPassword3" class="col-sm-2 control-label">Your Rating</label>
+
+                        <label class="radio-inline">
+                            <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> 1
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> 2
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3"> 3
+                        </label>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+        </section>
+    </article>
 
 
 </div>

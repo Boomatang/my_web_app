@@ -1,44 +1,48 @@
-
 {% extends "header.html" %}
 
 {% block body %}
 <!--TODO: add more padding to the page-->
 <div>
- <form action="" class="form-horizontal" method="post">
-  <div class="form-group">
-   <label for="first_name" class="col-sm-2 control-label">First Name</label>
-   <div class="col-sm-2">
-   {{ form.first_name(class_="form-control") }}
-   </div>
-  </div>
-  <div class="form-group">
-   <label for="surname" class="col-sm-2 control-label">Surname</label>
-   <div class="col-sm-2">
-   {{ form.surname(class_="form-control") }}
-   </div>
-  </div>
-  <div class="form-group">
-   <label for="email" class="col-sm-2 control-label">Email Address</label>
-   <div class="col-sm-2">
-   {{ form.email(class_="form-control") }}
-   </div>
-  </div>
-  <div class="form-group">
-   <label for="password" class="col-sm-2 control-label">Password</label>
-   <div class="col-sm-2">
-   {{ form.password(class_="form-control") }}
-   </div>
-  </div>
-  <div class="form-group">
-   <label for="re_password" class="col-sm-2 control-label">Re Type Password</label>
-   <div class="col-sm-2">
-   {{ form.re_password(class_="form-control") }}
-   </div>
-  </div>
-  <div class="form-group">
-   <input class="btn btn-success" type="submit" value="Create Job">
-  </div>
- </form>
+    <form action="" class="form-horizontal" method="post">
+        <div class="form-group">
+            <label for="first_name" class="col-sm-2 control-label">First Name</label>
+
+            <div class="col-sm-2">
+                {{ form.first_name(class_="form-control") }}
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="surname" class="col-sm-2 control-label">Surname</label>
+
+            <div class="col-sm-2">
+                {{ form.surname(class_="form-control") }}
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="email" class="col-sm-2 control-label">Email Address</label>
+
+            <div class="col-sm-2">
+                {{ form.email(class_="form-control") }}
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="password" class="col-sm-2 control-label">Password</label>
+
+            <div class="col-sm-2">
+                {{ form.password(class_="form-control") }}
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="re_password" class="col-sm-2 control-label">Re Type Password</label>
+
+            <div class="col-sm-2">
+                {{ form.re_password(class_="form-control") }}
+            </div>
+        </div>
+        <div class="form-group">
+            <input class="btn btn-success" type="submit" value="Create Job">
+        </div>
+    </form>
 
 
 </div>

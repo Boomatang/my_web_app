@@ -1,11 +1,12 @@
 import gc
 import random
+
 import pymysql
-from pymysql import escape_string as thwart
 from passlib.hash import sha256_crypt
 
 __author__ = 'boomatang'
 __version__ = '1'
+
 
 def connection():
     """
@@ -34,7 +35,6 @@ def conn_close(c, conn):
 
 
 def check_new_user_email(email):
-
     c, conn = connection()
 
     sql = """SELECT email
@@ -76,7 +76,6 @@ def create_user_account(values):
 
 
 def get_user_id(email):
-
     c, conn = connection()
 
     sql = """
