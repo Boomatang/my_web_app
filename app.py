@@ -8,7 +8,7 @@ from passlib.hash import sha256_crypt
 
 from forms_basics import *
 from sql_statments import *
-
+from common_functions import *
 __author__ = 'boomatang'
 __version__ = '1'
 
@@ -131,7 +131,14 @@ def index():
 def products():
     # TODO Change to make the custom url and add to cart
     # TODO: Add function to shorten up the description so as to keep all the boxes the same size. This may mean adding in white space.
-    product_list = product_full_list()
+    temp_product_list = product_full_list()
+    product_list = []
+    for product in temp_product_list:
+        ID = product[0]
+        name = product[1]
+        text = string_shorten(product[2])
+        cost = product[3]
+        product_list.append((ID, name, text, cost))
 
     if request.method == 'POST':
         flash("you got it right the first time")
