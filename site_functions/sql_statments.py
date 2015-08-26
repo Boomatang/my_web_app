@@ -145,3 +145,27 @@ def product_full_list():
     conn_close(c, conn)
 
     return output
+
+
+def product_details(IDproduct):
+    c, conn = connection()
+
+    sql = """
+        SELECT p.IDproduct, p.product_title, p.product_description, p.product_cost, concat(u.firstName, ' ', u.surName)
+        FROM product_tbl p, user_tbl u
+        WHERE p.IDcreator = u.iduser
+        AND IDproduct = %s
+        AND u.userLevel = 14;
+        """
+    values = (IDproduct,)
+
+    data = c.execute(sql, values)
+
+    if data == 1:
+        output = c.fetchone()
+    else:
+        output = None
+
+    conn_close(c, conn)
+
+    return output

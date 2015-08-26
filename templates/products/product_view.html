@@ -28,9 +28,9 @@
 
 
                 <div class="container col-sm-4 col-md-6">
-                    <h2>Product Title</h2>
-                    <h4>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<sup>By</sup> <cite>James
-                        Fitzpatrick</cite></h4>
+                    <h2>{{ product[1] }}</h2>
+                    <h4>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<sup>By</sup>
+                        <cite>{{ product[4] }}</cite></h4>
 
                     <div class="container  col-sm-4 col-md-6">
                         <p><b>User Rating</b></p>
@@ -47,7 +47,7 @@
 
 
                 <div class="container">
-                    <h3>Price: &euro;29.99</h3>
+                    <h3>Price: &euro;{{ product[3] }}</h3>
                     <a class="btn btn-primary" href="#" role="button">Add to Cart</a>
                 </div>
         </header>
@@ -60,76 +60,7 @@
                 <h3 class="panel-title">Description</h3>
             </div>
             <div class="panel-body">
-                <p>
-                    User Support</p>
-                <ol type="a">
-                    <li/>
-                    <p>
-                        The four levels of support are.</p>
-                    <ul>
-                        <li/>
-                        <p>
-                            On-line help is the lowest level of help. This is where the user
-                            finds their own help. It comes from good help documentation in the
-                            software and turning to the Internet forums to find information
-                            and help. It is the user going out and finding other user who may
-                            have had the same problem or knows how to solve the problems.
-                        </p>
-
-                        <p>It
-                            is possible that a user will gain the best long term information
-                            this way, as nothing will be handed to them. The user needs to
-                            learn to solve the problems themselves.
-                        </p>
-
-                        <p>For
-                            this to work successfully there needs to be large groups using the
-                            software or hardware in question. It will not work well for
-                            bespoke set ups.</p>
-                        <li/>
-                        <p>
-                            Front line support. The user is meet by a support personnel that
-                            is wanting to promote the system in question. These support
-                            personnel may not have a technical understanding of the problems
-                            and provide quick-fix solutions as well as non-technical support.</p>
-
-                        <p>It
-                            would be quite possible that the front line personnel would be
-                            reading from a list of predetermined answer to the problems. That
-                            is by no means saying that its not the right answer. Just if the
-                            user problem goes outside the scope of the answer, then the
-                            problem may be passed on to the next stage.</p>
-                        <li/>
-                        <p>
-                            The third level of support is the second line support. The support
-                            that is provide at this level is more technical. Support here will
-                            delve more in to the workings of the system over the user
-                            interaction with the system. To get to this level of support a
-                            user will first have to pass through the front line support.</p>
-
-                        <p>The
-                            support personnel here will be very technical and can be based in
-                            house or by an external company. They will have great knowledge of
-                            the system and can solve the majority of problems. Not many
-                            problems will pass this level of support and any that kjbido will
-                            be major problems.</p>
-                        <li/>
-                        <p>
-                            For the major problems there is the third line. This is the last
-                            line of support if a problem reach this level there is some real
-                            issues. The system builders, analysts and designers make up this
-                            support. Costs of this support will be taken up in a maintenance
-                            contract or on an issue by issue bases.
-                        </p>
-
-                        <p>Taken
-                            down or even rebuilding sections of a system are a real
-                            possibility at this stage. End results of a new system been need
-                            to be develop could come out as been the easiest and cheapest fix
-                            to a problem.
-                        </p>
-                    </ul>
-                    <li/>
+                {{ product[2] }}
             </div>
 
         </section>

@@ -1,7 +1,7 @@
 from functools import wraps
 import re
 import time
-
+from pymysql import escape_string as thwart
 from flask import Flask, render_template, request, flash, url_for, session
 from werkzeug.utils import redirect
 from passlib.hash import sha256_crypt
@@ -141,8 +141,6 @@ def products():
         product_list.append((ID, name, text, cost))
 
     if request.method == 'POST':
-        flash("you got it right the first time")
-
         if request.form['action'] == 'View':
             # TODO: pass the page number in to the url
             IDprod = request.form['Product'][0]
@@ -162,8 +160,8 @@ def products():
 def product_view():
     # TODO: There is a lot of sql work needed here
     IDproduct = request.args.get('ID')
-
-    return render_template('products/product_view.html')
+    product = product_details(IDproduct)
+    return render_template('products/product_view.html', product=product)
 
 
 # TODO: Set up the account page
@@ -179,7 +177,7 @@ def fail404(e):
 
 
 @app.errorhandler(405)
-def fail404(e):
+def fail405(e):
     return render_template("errors/405.html")
 
 

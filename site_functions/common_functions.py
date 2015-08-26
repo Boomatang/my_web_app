@@ -12,12 +12,6 @@ def string_shorten(text, max_length=115):
     if len(text) > max_length:
         new_text = text[:max_length] + "..."
 
-    elif len(text) < max_length:
-        short = max_length - len(text)
-
-        blank = ' ' * short
-        new_text = text + blank
-
     else:
         new_text = text
 
