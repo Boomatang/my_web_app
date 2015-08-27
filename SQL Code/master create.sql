@@ -32,6 +32,18 @@ CREATE UNIQUE INDEX `iduser_UNIQUE` ON `shop_front`.`user_tbl` (`iduser` ASC)  C
 CREATE UNIQUE INDEX `email_UNIQUE` ON `shop_front`.`user_tbl` (`email` ASC)  COMMENT '';
 
 -- -----------------------------------------------------
+-- Table `shop_front`.`creator_tbl`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `shop_front`.`creator_tbl`(
+	`IDceator` INT NOT NULL AUTO_INCREMENT COMMENT '',
+    `first_name` VARCHAR(30) NULL COMMENT '',
+	`surname` VARCHAR(30) NULL COMMENT '',
+    `email` VARCHAR(30) NULL COMMENT '',
+    `password` VARCHAR(100) NULL COMMENT '');
+-- Left on hold may be not needed
+-- -----------------------------------------------------
+
+-- -----------------------------------------------------
 -- Table `shop_front`.`product_tbl`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `shop_front`.`product_tbl` (
@@ -42,6 +54,23 @@ CREATE TABLE IF NOT EXISTS `shop_front`.`product_tbl` (
 	`product_description` VARCHAR(2000) NULL COMMENT '',
     `IDcreator` INT NULL COMMENT '',
     `product_entry_date` INT NULL COMMENT '',
-    PRIMARY KEY (`IDproduct`) COMMENT '')
+    PRIMARY KEY (`IDproduct`) COMMENT '',
+    CONSTRAINT `fk_IDcreator` FOREIGN KEY (`IDcreator`) 
+    REFERENCES `shop_front`.`user_tbl` (`iduser`))
 ENGINE = InnoDB;
 
+CREATE UNIQUE INDEX `idproduct_UNIQUE` ON `shop_front`.`product_tbl` (`IDproduct` ASC)  COMMENT '';
+
+-- -----------------------------------------------------
+-- Table `shop_front`.`product_image_tbl`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `shop_front`.`product_image_tbl` (
+	`IDimage` INT NOT NULL AUTO_INCREMENT COMMENT '',
+    `IDproduct` INT NULL COMMENT '',
+    `file_name` VARCHAR(60) NULL COMMENT '',
+    `ALT_text` VARCHAR(500) NULL COMMENT '',
+    `is_default` BOOLEAN NULL COMMENT '',
+    PRIMARY KEY (`IDimage`) COMMENT '',
+    CONSTRAINT `fk_IDproduct` FOREIGN KEY (`IDproduct`)
+    REFEReNCES `shop_front`.`product_tbl` (`IDproduct`))
+ENGINE = InnoDB;

@@ -14,7 +14,7 @@
     <!--TODO make this read from a list of images-->
     <!--TODO made as a added in Plugin type function-->
     <div class='photobanner'>
-        <img class='first' src='images/image-1.jpg' alt="">
+        <img class='first' src="{{ url_for('static', filename='images/image-1.jpg') }} alt="">
         <img src="{{ url_for('static', filename='images/image-2.jpg') }}" alt=''>
         <img src="{{ url_for('static', filename='images/image-3.jpg') }}" alt=''>
         <img src="{{ url_for('static', filename='images/image-4.jpg') }}" alt=''>
@@ -38,7 +38,7 @@
 
             <div class="col-xs-6 col-md-3">
                 <a href="#" class="list-group-item">
-                    <img src="{{ url_for('static', filename='images/image_holder-171x180.png') }}" alt="...">
+                    <img src="{{ url_for('static', filename='images/samples/tiny/20150731-_MG_4361.jpg') }}" alt="...">
                     <h5>Product Name</h5>
                     <h5>Price &euro;29.99</h5>
                 </a>
