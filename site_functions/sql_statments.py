@@ -131,8 +131,10 @@ def product_full_list():
     c, conn = connection()
 
     sql = """
-        SELECT IDproduct, product_title, product_description, product_cost
-        FROM product_tbl
+        SELECT p.IDproduct, p.product_title, p.product_description, p.product_cost, pi.file_name, pi.ALT_text
+        FROM product_tbl p, product_image_tbl pi
+        WHERE p.IDproduct = pi.IDproduct
+        AND pi.is_default = True
         """
 
     data = c.execute(sql)
@@ -163,6 +165,29 @@ def product_details(IDproduct):
 
     if data == 1:
         output = c.fetchone()
+    else:
+        output = None
+
+    conn_close(c, conn)
+
+    return output
+
+
+def product_images(IDprocdut):
+    c, conn = connection()
+
+    sql = """
+    SELECT pi.file_name, pi.ALT_text, pi.is_default
+    FROM product_image_tbl pi
+    WHERE pi.IDproduct = %s
+    """
+
+    values = (IDprocdut,)
+
+    data = c.execute(sql, values)
+
+    if data > 0:
+        output = c.fetchall()
     else:
         output = None
 

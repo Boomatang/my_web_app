@@ -14,14 +14,20 @@
                     <!--TODO: Large view of images needs to be put in place-->
                     <!--TODO: Add size for the max image, this is for the large and small images-->
                     <!--TODO: List needs to come from the data base with image links-->
-                    <img src=" {{ url_for('static', filename='images/image_holder-250x300.png') }}" alt="..."
+                    <img src=" {{ url_for('static', filename='images/samples/250x300/' + default_image[0]) }}" alt="default_image[1]"
                          style="border: solid gray 1px">
+                    {% for image in image_list %}
+                    <img src="{{ url_for('static', filename='images/samples/75x90/' + image[0]) }}" alt="image[1]"
+                         style="border: solid gray 1px">
+                    {% endfor %}
+                    <!--
                     <img src="{{ url_for('static', filename='images/image_holder-75x90.png') }}" alt="..."
                          style="border: solid gray 1px">
                     <img src="{{ url_for('static', filename='images/image_holder-75x90.png') }}" alt="..."
                          style="border: solid gray 1px">
                     <img src="{{ url_for('static', filename='images/image_holder-75x90.png') }}" alt="..."
                          style="border: solid gray 1px">
+                         -->
 
 
                 </div>

@@ -138,7 +138,9 @@ def products():
         name = product[1]
         text = string_shorten(product[2])
         cost = product[3]
-        product_list.append((ID, name, text, cost))
+        file_name = product[4]
+        ALT_text = product[5]
+        product_list.append((ID, name, text, cost, file_name, ALT_text))
 
     if request.method == 'POST':
         if request.form['action'] == 'View':
@@ -161,7 +163,20 @@ def product_view():
     # TODO: There is a lot of sql work needed here
     IDproduct = request.args.get('ID')
     product = product_details(IDproduct)
-    return render_template('products/product_view.html', product=product)
+    master_images = product_images(product[0])
+    default_image = ''
+    image_list = []
+
+    for image in master_images:
+        if image[2]:
+            default_image = image
+        else:
+            image_list.append(image)
+
+    return render_template('products/product_view.html',
+                           product=product,
+                           default_image=default_image,
+                           image_list=image_list)
 
 
 # TODO: Set up the account page
