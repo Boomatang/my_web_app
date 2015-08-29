@@ -32,18 +32,6 @@ CREATE UNIQUE INDEX `iduser_UNIQUE` ON `shop_front`.`user_tbl` (`iduser` ASC)  C
 CREATE UNIQUE INDEX `email_UNIQUE` ON `shop_front`.`user_tbl` (`email` ASC)  COMMENT '';
 
 -- -----------------------------------------------------
--- Table `shop_front`.`creator_tbl`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `shop_front`.`creator_tbl`(
-	`IDceator` INT NOT NULL AUTO_INCREMENT COMMENT '',
-    `first_name` VARCHAR(30) NULL COMMENT '',
-	`surname` VARCHAR(30) NULL COMMENT '',
-    `email` VARCHAR(30) NULL COMMENT '',
-    `password` VARCHAR(100) NULL COMMENT '');
--- Left on hold may be not needed
--- -----------------------------------------------------
-
--- -----------------------------------------------------
 -- Table `shop_front`.`product_tbl`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `shop_front`.`product_tbl` (
@@ -72,5 +60,22 @@ CREATE TABLE IF NOT EXISTS `shop_front`.`product_image_tbl` (
     `is_default` BOOLEAN NULL COMMENT '',
     PRIMARY KEY (`IDimage`) COMMENT '',
     CONSTRAINT `fk_IDproduct` FOREIGN KEY (`IDproduct`)
-    REFEReNCES `shop_front`.`product_tbl` (`IDproduct`))
+    REFERENCES `shop_front`.`product_tbl` (`IDproduct`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `shop_front`.`product_comment_tbl`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `shop_front`.`product_comment_tbl` (
+	`IDcomment` INT NOT NULL AUTO_INCREMENT COMMENT '',
+    `IDproduct` INT NOT NULL COMMENT '',
+    `IDuser` INT NOT NULL COMMENT '',
+    `user_comment` VARCHAR(1000) NULL COMMENT '',
+    `comment_date` INT NULL COMMENT '',
+    PRIMARY KEY (`IDcomment`) COMMENT '',
+    CONSTRAINT `fk_IDproduct_comment` FOREIGN KEY (`IDproduct`)
+    REFERENCES `shop_front`.`product_tbl` (`IDproduct`),
+    CONSTRAINT `fk_IDuser_comment` FOREIGN KEY (`IDuser`)
+    REFERENCES `shop_front`.`user_tbl` (`iduser`))
 ENGINE = InnoDB;

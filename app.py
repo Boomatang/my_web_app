@@ -167,6 +167,12 @@ def product_view():
     default_image = ''
     image_list = []
 
+    form = Comment()
+
+    if request.method == 'POST':
+        if request.form['action'] == 'Post Comment':
+            flash("Your comment has been posted!!")
+
     for image in master_images:
         if image[2]:
             default_image = image
@@ -176,7 +182,8 @@ def product_view():
     return render_template('products/product_view.html',
                            product=product,
                            default_image=default_image,
-                           image_list=image_list)
+                           image_list=image_list,
+                           form=form)
 
 
 # TODO: Set up the account page
