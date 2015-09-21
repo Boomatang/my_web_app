@@ -185,6 +185,9 @@ def product_view():
                            image_list=image_list,
                            form=form)
 
+@app.route('/cart/')
+def cart():
+    return render_template("products/cart.html")
 
 # TODO: Set up the account page
 @app.route('/account/')
