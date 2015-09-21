@@ -14,10 +14,12 @@
                     <!--TODO: Large view of images needs to be put in place-->
                     <!--TODO: Add size for the max image, this is for the large and small images-->
                     <!--TODO: List needs to come from the data base with image links-->
-                    <img src=" {{ url_for('static', filename='images/samples/250x300/' + default_image[0]) }}" alt="default_image[1]"
+                    <input type="image" class="" data-toggle="modal" data-target="#myModal" src=" {{ url_for('static', filename='images/samples/250x300/' + default_image[0]) }}" alt="default_image[1]"
                          style="border: solid gray 1px">
+                    <!--<img src=" {{ url_for('static', filename='images/samples/250x300/' + default_image[0]) }}" alt="default_image[1]"-->
+                         <!--style="border: solid gray 1px">-->
                     {% for image in image_list %}
-                    <img src="{{ url_for('static', filename='images/samples/75x90/' + image[0]) }}" alt="image[1]"
+                    <input type="image" class="" data-toggle="modal" data-target="#myModal" src="{{ url_for('static', filename='images/samples/75x90/' + image[0]) }}" alt="image[1]"
                          style="border: solid gray 1px">
                     {% endfor %}
                 </div>
@@ -99,7 +101,25 @@
         </section>
     </article>
 
-
+<!-- Modal -->
+    <!--TODO This modal needs to be made so as to change images and not just show the default image.-->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <!--<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>-->
+        <h4 class="modal-title" id="myModalLabel">{{ product[1] }}</h4>
+      </div>
+      <div class="modal-body view-product" >
+       <img src=" {{ url_for('static', filename='images/samples/500x600/' + default_image[0]) }}" alt="default_image[1]"
+                         style="border: solid gray 1px">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
 </div>
 
 {% endblock %}
