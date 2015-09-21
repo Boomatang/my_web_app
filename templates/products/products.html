@@ -10,14 +10,18 @@
     <!-- A product -->
     <form method="post">
         <div class="col-sm-6 col-md-3">
-            <div class="thumbnail">
+            <div class="thumbnail" style="height: 475px;">
                 <!--TODO change the values for the images-->
-                <img src="{{ url_for('static', filename=('images/samples/200x240/'+ entry[4])) }}" alt="{{ entry[5] }}">
+
+                <!--<img src="{{ url_for('static', filename=('images/samples/200x240/'+ entry[4])) }}" alt="{{ entry[5] }}">-->
+                <!--TODO The image does not center in the view. This needs to be fixed -->
+                <input id="view_product"
+                       style="margin-left: auto; margin-right: auto;"
+                       type="image" name="action" value="View" src="{{ url_for('static', filename=('images/samples/200x240/'+ entry[4])) }}" alt="{{ entry[5] }}">
 
                 <div class="caption">
                     <h3>{{ entry[1] }}</h3>
                     {{ entry[2] }}
-                    <!--<p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus.</p>-->
                     <h5>Price &euro;{{ entry[3] }}</h5>
 
                     <!--TODO add value to product so as to allow bookmarking-->
